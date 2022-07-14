@@ -8,7 +8,9 @@
   </head>
   <body>
     <?php foreach ($photos as $photo) { ?>
-      <img src="./public/img/<?php echo $photo['image_address']; ?>" alt="<?php echo $photo['image_address']; ?>">
+      <a href="?c=gallery">
+        <img src="./public/img/<?php echo $photo['image_address']; ?>" alt="<?php echo $photo['image_address']; ?>">
+      </a>
     <?php } ?>
   </body>
 </html>
