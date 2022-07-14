@@ -22,7 +22,7 @@
     echo $totalPages;
     ?>
     <div class="controllers-pagination">
-      <?php if ($actualPage != 1) { ?>
+      <?php if ($actualPage > 1 && $actualPage <= $totalPages) { ?>
         <a href="?p=<?php echo $actualPage - 1; ?>">Preview Page</a>
       <?php } ?>      
     <?php if ($actualPage < $totalPages) { ?>
