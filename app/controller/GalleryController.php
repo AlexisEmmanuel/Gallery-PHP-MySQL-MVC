@@ -6,7 +6,27 @@ class GalleryController {
     $this->model = new GalleryModel;
   }
   public function getImages() { // get all images
-    $photos = $this->model -> givePhotos();
+    /* Pagination */
+    $photosPerPage = 8;
+    $actualPage = isset($_GET['p']) ? $_GET['p'] : 1;
+    if ($actualPage < 1) {
+      $actualPage = $actualPage - $actualPage + 1;
+    }
+    $mainPage = $actualPage>1 ? $actualPage * $photosPerPage - $photosPerPage : 0;
+
+    $images = $this->model -> givePhotos($mainPage, $photosPerPage);
+    
+    /* If there are no images to show */
+    if (!$images) {
+      echo 'No pictures';
+    }
+    /* this knows how many rows there are */
+    $totalRows = $this->model -> giveTotalRows();
+    
+    /* Calculate total of pages with images */
+    $totalPages = ($totalRows/$photosPerPage);
+    $totalPages = ceil($totalPages);
+
     require_once './app/view/getImages.php';
   }
   public function getImage() { // get only 1 image
