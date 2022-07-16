@@ -17,16 +17,12 @@
         </a>
       <?php } ?>
     </div>
-    <?php
-    echo $actualPage.'<br>';
-    echo $totalPages;
-    ?>
     <div class="controllers-pagination">
       <?php if ($actualPage > 1 && $actualPage <= $totalPages) { ?>
-        <a href="?p=<?php echo $actualPage - 1; ?>">Preview Page</a>
+        <a class="btn btn-primary position-btn-prev" href="?p=<?php echo $actualPage - 1; ?>">Preview Page</a>
       <?php } ?>      
     <?php if ($actualPage < $totalPages) { ?>
-        <a href="?p=<?php echo $actualPage + 1; ?>">Next Page</a>
+        <a class="btn btn-primary position-btn-next" href="?p=<?php echo $actualPage + 1; ?>">Next Page</a>
       <?php } ?>
     </div>
   </div>
