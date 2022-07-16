@@ -29,10 +29,10 @@ class GalleryController {
 
     require_once './app/view/getImages.php';
   }
-  public function getImage() { // get only 1 image
+  public function viewImage() { // get only 1 image
     echo 'Succesful load...';
   }
-  public function createImage() { // create new image
+  public function uploadImage() { // create new image
     echo 'Succesful load...';
   }
   public function updateImage() { // update new image

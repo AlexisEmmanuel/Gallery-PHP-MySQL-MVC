@@ -9,11 +9,12 @@
 </head>
 
 <body>
+  <?php require_once './app/templates/navbar.php'; ?>
   <div class="container">
     <div class="gallery">
       <?php foreach ($images as $photo) { ?>
-        <a href="?c=gallery">
-          <img src="./public/img/<?php echo $photo['image_address']; ?>" alt="<?php echo $photo['image_address']; ?>">
+        <a class="father-image" href="?c=gallery&a=viewImage&image=<?php echo $photo['image_id']; ?>">
+          <img class="image" src="./public/img/<?php echo $photo['image_address']; ?>" alt="<?php echo $photo['image_address']; ?>">
         </a>
       <?php } ?>
     </div>
