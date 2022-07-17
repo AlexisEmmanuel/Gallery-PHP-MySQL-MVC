@@ -30,7 +30,9 @@ class GalleryController {
     require_once './app/view/getImages.php';
   }
   public function viewImage() { // get only 1 image
-    echo 'Succesful load...';
+    $imageID = isset($_GET['image']) && $_GET['image'] >= 1 ? $_GET['image'] : header('Location: '. WEBURL);
+    $image = $this->model->getImage($imageID);
+    require_once './app/view/viewimage.php';
   }
   public function uploadImage() { // create new image
     echo 'Succesful load...';

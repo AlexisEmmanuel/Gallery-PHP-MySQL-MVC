@@ -3,6 +3,7 @@ class GalleryModel {
   private $db;
   private $images;
   private $totalRows;
+  private $image;
 
   public function __construct() {
     $this->db = (new Connect)->connection();
@@ -22,5 +23,16 @@ class GalleryModel {
     $stmt -> execute();
     $this->totalRows = $stmt->fetch()['total_rows'];
     return $this->totalRows;
+  }
+  
+  public function getImage($id) {
+    $stmt = $this->db->prepare(
+      "SELECT * FROM `images` WHERE image_id = :id"
+    );
+    $stmt->execute(
+      array(':id' => $id)
+    );
+    $this->image = $stmt->fetchAll();
+    return $this->image;
   }
 }
