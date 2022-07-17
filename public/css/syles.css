@@ -107,6 +107,8 @@ a {
 /* Buttons */
 
 .btn {
+  cursor: pointer;
+  border: none;
   padding: 9px 25px;
   text-decoration: none;
   border-radius: 8px;
@@ -167,4 +169,46 @@ a {
 .position-btn-prev {
   position: absolute;
   left: 0;
+}
+
+/* Upload image */
+
+.header-form {
+  margin: 30px 0 40px;
+}
+
+.title-header {
+  text-align: center;
+}
+
+.content-input-image {
+  border: 1px solid black;
+  border-radius: 15px;
+  padding: 30px 10px 20px;
+  width: 100%;
+}
+
+.form-submit-image {
+  display: flex;
+  flex-direction: column;
+}
+
+.file {
+  display: none;
+}
+
+.uploadimage {
+  width: 80%;
+  height: 120px;
+  border: none;
+  border-radius: 15px;
+  color: white;
+  margin: 0 auto;
+  background-color: red;
+  cursor: pointer;
+}
+
+.error-reporter {
+  text-align: center;
+  color: red;
 }

@@ -35,4 +35,12 @@ class GalleryModel {
     $this->image = $stmt->fetchAll();
     return $this->image;
   }
+  public function saveImage($name) {
+    $stmt = $this->db->prepare(
+      "INSERT INTO `images` (image_id, image_address) VALUES (NULL, :nameimage)"
+    );
+    $stmt->execute(array(
+      ':nameimage' => $name
+    ));
+  }
 }
