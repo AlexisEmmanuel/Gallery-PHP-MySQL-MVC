@@ -7,7 +7,7 @@
 
 <body>
   <?php require_once './app/templates/navbar.php'; ?>
-  <div class="container">
+  <div class="container new-section">
     <div class="gallery">
       <?php foreach ($images as $photo) { ?>
         <a class="father-image" href="?c=gallery&a=viewImage&image=<?php echo $photo['image_id']; ?>">

@@ -7,7 +7,7 @@
 
 <body>
   <?php require_once './app/templates/navbar.php'; ?>
-  <div class="container">
+  <div class="container new-section">
     <?php foreach ($image as $img) { ?>
       <img src="./public/img/<?php echo $img['image_address']; ?>" alt="">
     <?php } ?>

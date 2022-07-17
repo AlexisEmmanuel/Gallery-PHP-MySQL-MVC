@@ -1,11 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Inder&display=swap');
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-*::before, *::after {
+
+*::before,
+*::after {
   box-sizing: border-box;
 }
+
+body {
+  background-color: #fafafafa;
+  font-size: 18px;
+  font-family: 'Inder', sans-serif;
+}
+
 img {
   width: 100%;
   height: 100%;
@@ -13,6 +24,15 @@ img {
   object-fit: cover;
   margin: 0 auto;
 }
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
 .container {
   width: 90%;
   margin: 0 auto;
@@ -21,12 +41,76 @@ img {
   flex-direction: column;
 }
 
+.new-section {
+  margin-top: 30px;
+}
+
+/* Navbar */
+
+.navbar {
+  padding: 20px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.089);
+}
+
+.bg-navbar {
+  background-color: rgb(19, 19, 19);
+}
+
+.flex-navbar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  align-content: unset;
+  flex-wrap: wrap;
+}
+
+.brand-navbar {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.links-navbar {
+  margin-top: 13px;
+}
+
+.links-navbar,
+.link-navbar {
+  width: 100%;
+}
+
+.brand-navbar,
+.link-navbar {
+  color: #ffff;
+  text-align: center;
+  width: 100%;
+}
+
+.link-navbar {
+  display: inline-block;
+}
+
+@media (min-width: 370px) {
+
+  .links-navbar,
+  .link-navbar {
+    width: unset;
+  }
+
+  .brand-navbar,
+  .link-navbar {
+    width: unset;
+  }
+}
+
 /* Buttons */
 
 .btn {
   padding: 9px 25px;
   text-decoration: none;
   border-radius: 8px;
+  letter-spacing: 1px;
 }
 
 .btn-primary {
@@ -39,6 +123,7 @@ img {
 .father-image {
   width: 100%;
   height: 100%;
+  max-height: 200px;
 }
 
 .image {
@@ -50,12 +135,12 @@ img {
   display: grid;
   grid-template-columns: 1;
   grid-template-rows: 1;
-  gap: 0;
+  gap: 1rem;
 }
+
 
 @media (min-width: 370px) {
   .gallery {
-    display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(4, 1fr);
     gap: 0;
@@ -64,10 +149,8 @@ img {
 
 @media (min-width: 750px) {
   .gallery {
-    display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(2, 1fr);
-    gap: 0;
   }
 }
 
@@ -80,6 +163,7 @@ img {
   position: absolute;
   right: 0;
 }
+
 .position-btn-prev {
   position: absolute;
   left: 0;
