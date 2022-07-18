@@ -15,6 +15,7 @@ body {
   background-color: #fafafafa;
   font-size: 18px;
   font-family: 'Inder', sans-serif;
+  overflow-x: hidden;
 }
 
 img {
@@ -48,6 +49,11 @@ a {
 /* Navbar */
 
 .navbar {
+  position: sticky;
+  width: 100%;
+  z-index: 100;
+  top: 0;
+  
   padding: 20px 0;
   border-bottom: 1px solid rgba(0, 0, 0, 0.089);
 }
@@ -72,36 +78,87 @@ a {
 }
 
 .links-navbar {
-  margin-top: 13px;
-}
-
-.links-navbar,
-.link-navbar {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  justify-content: space-evenly;
+  background-color: rgb(39, 39, 39);
+  top: 86px;
+  left: 0;
   width: 100%;
+  padding: 60px 0;
+  gap: 15px;
 }
 
+.active-navbar {
+  display: none;
+}
 .brand-navbar,
 .link-navbar {
   color: #ffff;
   text-align: center;
-  width: 100%;
 }
 
 .link-navbar {
   display: inline-block;
+  width: 80%;
+  margin: 0 auto;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.233);
 }
 
-@media (min-width: 370px) {
+.link-item-navbar {
+  display: flex;
+  flex-direction: column;
+}
 
-  .links-navbar,
-  .link-navbar {
-    width: unset;
+
+.burger-menu {
+  width: 35px;
+  height: 45px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+@media (min-width: 700px) {
+  .burger-menu {
+    display: none;
+  }
+  .links-navbar {
+    display: flex;
+    flex-direction: row;
+    position: unset;
+    justify-content: unset;
+    background: none;
+    top: unset;
+    left: unset;
+    width: auto;
+    padding: unset;
+    gap: 15px;
+  }
+  
+  .active-navbar {
+    display: flex;
   }
 
-  .brand-navbar,
   .link-navbar {
-    width: unset;
+    display: unset;
+    width: auto;
+    margin: unset;
+    padding: unset;
+    border: none;
   }
+}
+
+.bar-1,
+.bar-2,
+.bar-3 {
+  display: block;
+  height: 5px;
+  background-color: rgb(255, 255, 255);
+  width: 100%;
 }
 
 /* Buttons */
@@ -134,6 +191,7 @@ a {
 }
 
 .gallery {
+  z-index: 0;
   display: grid;
   grid-template-columns: 1;
   grid-template-rows: 1;
