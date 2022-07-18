@@ -45,7 +45,7 @@ class GalleryModel {
   }
   public function deleteImage($id) {
     $stmt = $this->db->prepare(
-      "DELETE FROM `images` WHERE image_id = :id"
+      "DELETE FROM `images` WHERE image_id = :id LIMIT 1"
     );
     $stmt->execute(array(
       ':id' => $id
