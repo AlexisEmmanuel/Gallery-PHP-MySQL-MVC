@@ -12,10 +12,10 @@
       </li>
       <?php if (isset($_GET['image'])) { ?>
         <li class="link-item-navbar">
-          <a href="?c=gallery&a=uploadImage" class="link-navbar">Delete image</a>
+          <a href="?c=gallery&a=deleteImage&image=<?php echo $_GET['image']; ?>" class="link-navbar">Delete image</a>
         </li>
         <li class="link-item-navbar">
-          <a href="?c=gallery&a=uploadImage" class="link-navbar">Update image</a>
+          <a href="?c=gallery&a=updateImage&image=<?php echo $_GET['image']; ?>" class="link-navbar">Update image</a>
         </li>
       <?php } ?>
     </ol>

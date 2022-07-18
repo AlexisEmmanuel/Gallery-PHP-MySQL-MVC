@@ -64,6 +64,17 @@ class GalleryController {
     echo 'Succesful load...';
   }
   public function deleteImage() { // delete 1 image
-    echo 'Succesful load...';
+    if(isset($_GET['image'])) {
+      $route = 'public/img/';
+      $imageID = $_GET['image'];
+      $imageName = $this->model->getImage($imageID);
+      foreach ($imageName as $img) {$img['image_address'];}
+      $completeFile = $route.$img['image_address'];
+      unlink($completeFile);
+      $this->model->deleteImage($imageID);
+      header('Location: '.WEBURL);
+    } else {
+      header('Location: '.WEBURL);
+    }
   }
 }

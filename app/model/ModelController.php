@@ -43,4 +43,12 @@ class GalleryModel {
       ':nameimage' => $name
     ));
   }
+  public function deleteImage($id) {
+    $stmt = $this->db->prepare(
+      "DELETE FROM `images` WHERE image_id = :id"
+    );
+    $stmt->execute(array(
+      ':id' => $id
+    ));
+  }
 }
