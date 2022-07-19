@@ -4,6 +4,7 @@ class GalleryModel {
   private $images;
   private $totalRows;
   private $image;
+  private $name;
 
   public function __construct() {
     $this->db = (new Connect)->connection();
@@ -43,12 +44,33 @@ class GalleryModel {
       ':nameimage' => $name
     ));
   }
-  public function deleteImage($id) {
+  public function deleteImage($idImage) {
     $stmt = $this->db->prepare(
       "DELETE FROM `images` WHERE image_id = :id LIMIT 1"
     );
     $stmt->execute(array(
-      ':id' => $id
+      ':id' => $idImage
+    ));
+  }
+  public function getImageName($idImage) {
+    $stmt = $this->db->prepare(
+      "SELECT image_address FROM `images` WHERE image_id = :id LIMIT 1"
+    );
+    $stmt->execute(array(
+      ':id' => $idImage
+    ));
+    $this->name = $stmt->fetchAll();
+    return $this->name;
+  }
+  public function saveNewImageName($nameImage, $idImage) {
+    $stmt = $this->db->prepare(
+      "UPDATE `images`
+      SET image_address = :newImageName
+      WHERE image_id = :imageID;"
+    );
+    $stmt->execute(array(
+      ':newImageName' => $nameImage,
+      ':imageID' => $idImage
     ));
   }
 }

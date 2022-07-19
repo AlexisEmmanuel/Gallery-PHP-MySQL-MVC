@@ -9,7 +9,7 @@
   <?php require_once './app/templates/navbar.php'; ?>
   <header class="header-form">
     <div class="container">
-      <h1 class="title-header">New photo</h1>
+      <h1 class="title-header">Edit photo</h1>
     </div>
   </header>
   <div class="container new-section">

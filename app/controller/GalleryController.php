@@ -61,7 +61,51 @@ class GalleryController {
     require_once './app/view/uploadimage.php';
   }
   public function updateImage() { // update new image
-    echo 'Succesful load...';
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+      $file = $_FILES['image'];
+      $errorReporter = null;
+      if ($file['error'] == 0) {
+        if ($file['size'] <= 10000000) { // validate image size
+          if ($file['type'] == 'image/jpeg' || $file['type'] == 'image/jpg' || $file['type'] == 'image/png') {
+            /* Delete previus image */
+            if (isset($_GET['image'])) {
+              $route = 'public/img/';
+              $idImageToUpdate = $_GET['image']; // Id of the image being edited
+              $fileName = $this->model->getImageName($idImageToUpdate);// Get image name
+              foreach ($fileName as $name) {
+                $nameOld = $name['image_address'];
+              }
+              $completeOldImage = $route.$nameOld;
+              // echo 'Old image name: '.$nameOld.'<br>'; // Old name
+              // echo 'Old image route: '.$completeOldImage; // Old name
+              /* New image */
+              $nameImage = $_FILES['image']['name'];
+              $time = date('d-m-y-h-i-s');
+              $imageName = $time.'-'.$nameImage;
+              $completeFile = $route.$imageName;
+              // echo '<br>New image name: '.$imageName;
+              // echo '<br>New image route: '.$completeFile;
+              /* Replace names */
+              $fileName = $this->model->saveNewImageName($imageName, $idImageToUpdate); // Set new name
+              /* Delete old image */
+              unlink($completeOldImage);
+              /* Set new image */
+              move_uploaded_file($_FILES['image']['tmp_name'], $completeFile);
+              header('Location: '.WEBURL);
+            } else {
+              $errorReporter = 'File error';
+            }
+          } else {
+            $errorReporter = 'Only can use .png, .jpg, .jpeg';
+          }
+        } else {
+          $errorReporter = 'Image too heavy';
+        }
+      } else {
+        $errorReporter = 'Image not selected';
+      }
+    }
+    require_once './app/view/updateimage.php';
   }
   public function deleteImage() { // delete 1 image
     if(isset($_GET['image'])) {
